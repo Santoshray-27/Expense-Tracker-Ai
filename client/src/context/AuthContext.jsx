@@ -4,8 +4,9 @@ import axios from 'axios';
 const AuthContext = createContext(null);
 
 // Create custom Axios instance
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : '/api');
 export const api = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  baseURL: API_URL
 });
 
 // Auto-inject JWT Token if it exists in localStorage

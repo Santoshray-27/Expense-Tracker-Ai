@@ -7,7 +7,9 @@
     "server": "npm run dev --prefix server",
     "client": "npm run dev --prefix client",
     "dev": "concurrently -n \"server,client\" -c \"bgBlue,bgGreen\" \"npm run server\" \"npm run client\"",
-    "build": "npm run build --prefix client"
+    "build": "npm run build --prefix client",
+    "postinstall": "npm install --prefix server && npm install --prefix client",
+    "start": "node server/src/index.js"
   },
   "dependencies": {
     "concurrently": "^8.2.2"

@@ -102,5 +102,23 @@ This outputs production-optimized, minified JS, HTML, and CSS assets to the `cli
 
 ---
 
+## ☁️ Deployment
+
+This project is configured as a fully deployable MERN monorepo. The server automatically serves the compiled frontend client on production builds.
+
+### Deploying to Render / Railway / Heroku
+
+1. **Create a Web Service / App** on your chosen platform and link this Git repository.
+2. **Configure Environment Variables**:
+   - `MONGO_URI`: Your MongoDB Atlas connection string.
+   - `JWT_SECRET`: A secure string for session hashing.
+   - `GEMINI_API_KEY`: Your Google Gemini API Key.
+   - `NODE_ENV`: `production`
+3. **Configure Build & Start Commands**:
+   - **Build Command**: `npm run build` (This installs all dependencies and compiles the client assets).
+   - **Start Command**: `npm start` (This starts the Express server which serves the API and the React build).
+
+---
+
 ## 🛡️ License
 SmartWealth AI is free and open-source software.

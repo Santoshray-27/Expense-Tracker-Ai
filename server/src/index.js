@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -9,16 +10,26 @@ connectDB();
 const app = express();
 
 // Middlewares
+const allowedOrigins = [
+  ...(process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',') : []),
+  'http://localhost:3000',
+  'http://127.0.0.1:3000'
+].map(url => url.trim());
+
 app.use(cors({
-  origin: '*', // For development, allow any front-end origin
+  origin: (origin, callback) => {
+    // Allow all origins in non-production environments
+    if (!origin || process.env.NODE_ENV !== 'production') {
+      return callback(null, true);
+    }
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Blocked by CORS policy'), false);
+  },
   credentials: true
 }));
 app.use(express.json());
-
-// Base Route
-app.get('/', (req, res) => {
-  res.send('MERN AI Expense Tracker API is running...');
-});
 
 // Mount Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -26,6 +37,18 @@ app.use('/api/transactions', require('./routes/transactions'));
 app.use('/api/budgets', require('./routes/budgets'));
 app.use('/api/goals', require('./routes/goals'));
 app.use('/api/ai', require('./routes/ai'));
+
+// Serve Static Assets in Production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../../client/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../client', 'dist', 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('MERN AI Expense Tracker API is running...');
+  });
+}
 
 // Global Error Handler
 app.use((err, req, res, next) => {
