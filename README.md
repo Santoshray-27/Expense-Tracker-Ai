@@ -2,7 +2,9 @@
 
 An intelligent, state-of-the-art Personal Expense Tracker and Wealth Advisor constructed using the **MERN** stack (MongoDB, Express, React, Node.js) with deep integration of **Google Gemini AI**.
 
-This application represents a modern financial hub that allows users to record daily cash flows, allocate monthly category boundaries, view real-time compliance progress meters, and consult an AI wealth coach to audit spending and receive hyper-personalized saving recommendations.
+**Live Demo:** https://smartwealth-expense-tracker-ai.vercel.app/
+
+This application represents a modern financial hub that allows users to record daily cash flows, allocate monthly category boundaries, view real-time compliance progress meters, and consult an AI wealth advisor.
 
 ---
 
@@ -18,7 +20,7 @@ This application represents a modern financial hub that allows users to record d
    - Smart redirection that forwards unauthenticated users back to the landing page.
 3. **Hybrid Intelligent Record Entry**
    - **Manual Inputs**: Traditional dropdown category selection, values, dates, and vendor notes.
-   - **AI Conversational NLP Input**: Write regular phrases like *"spent 45 bucks on dinner tonight with colleagues"* or *"received 500 dollars as freelance design bonus"* and click **Parse**. The backend AI extracts and populates standard database schema values instantly.
+   - **AI Conversational NLP Input**: Write regular phrases like *"spent 45 bucks on dinner tonight with colleagues"* or *"received 500 dollars as freelance design bonus"* and click **Parse**. The system interprets and structures the entry automatically.
 4. **Interactive Analytical Graphics (Recharts)**
    - Beautiful responsive **Pie Charts** reflecting proportional category spending, dynamically styled with OKLCH CSS variables for perfect light/dark theme compatibility.
    - Comparative dual-column **Bar Charts** charting Category Budgets vs. Actual monthly spending.
@@ -27,9 +29,9 @@ This application represents a modern financial hub that allows users to record d
    - Interactive progress bars color-coded dynamically based on consumption levels (**Green** for safe, **Orange** for >80% warnings, **Red** for >100% exceeded limits).
 6. **SmartWealth AI™ Financial Coaching Audit**
    - Aggregates user's cash-flows, budget limits, category breakdowns, and latest transaction history into an advanced context.
-   - Requests **Google Gemini AI** to produce a personalized, professional financial advisory review, featuring empathetic feedback, budget violation diagnostics, and exactly 3 actionable, custom wealth strategies.
+   - Requests **Google Gemini AI** to produce a personalized, professional financial advisory review, featuring empathetic feedback, budget violation diagnostics, and exactly 3 actionable, custom wealth tips.
 7. **Graceful Offline Simulator Fallback**
-   - If a Google Gemini API Key is not set up, the application continues to run in a **Simulation Mode** using local regex parsing and statistical analysis. This means you can run, log, test, and view custom insights **with zero API keys required out of the box!**
+   - If a Google Gemini API Key is not set up, the application continues to run in a **Simulation Mode** using local regex parsing and statistical analysis. This means you can run, log, test, and view core features without external dependencies.
 
 ---
 
